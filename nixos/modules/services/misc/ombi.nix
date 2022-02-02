@@ -42,6 +42,12 @@ in {
         default = "ombi";
         description = "Group under which Ombi runs.";
       };
+      
+      baseURL = mkOption {
+        type = types.str;
+        default = "";
+        description = "The base URL when Ombi is behind a reverse proxy. Must start with a /";
+      };
     };
   };
 
@@ -59,7 +65,7 @@ in {
         Type = "simple";
         User = cfg.user;
         Group = cfg.group;
-        ExecStart = "${pkgs.ombi}/bin/Ombi --storage '${cfg.dataDir}' --host 'http://*:${toString cfg.port}'";
+        ExecStart = "${pkgs.ombi}/bin/Ombi --storage '${cfg.dataDir}' --host 'http://*:${toString cfg.port}' --baseurl '${cfg.baseURL}' ";
         Restart = "on-failure";
       };
     };
