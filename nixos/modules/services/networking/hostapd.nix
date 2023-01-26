@@ -183,7 +183,7 @@ in
       extraConfig = mkOption {
         default = "";
         example = ''
-          auth_algo=0
+          auth_algs=1
           ieee80211n=1
           ht_capab=[HT40-][SHORT-GI-40][DSSS_CCK-40]
           '';
